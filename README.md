@@ -1,18 +1,19 @@
 # Gentetics&Genomics
 
-#Introduction to genomics data editing and manipulation
+# Introduction to genomics data editing and manipulation
 
-##MAIN GOALS 
+## MAIN GOALS 
 The objective of these two sessions is to learn some basic but useful practical tricks for genome-scale data mining. To do that, you will practice with a few of the many bioinformatics utilities commonly used to genome data handling and manipulation. The lesson is divided in three main parts. The first part (session 1, XXX), will be dedicated to install all required packages and software, to obtain the genomics data files to work with, and to see some simple examples of how to extract features and retrieve valuable information form these files. The second part (homework), will consist of solving a practical exercise (see below) based on the same tools and data retrieved in the first session; students must deliver (XXX) a small report explaining briefly the workflow and the scripts used to find the solution. Finally, in the last part (session 2, XXX) we will provide the appropriate feedback for the correct solution of the exercise.
 
-##SESSION 1
-##Installing packages and software utilities
+## SESSION 1
+## Installing packages and software utilities
 The first step consists in to download and install the packages and bioinformatics tools necessary to work with genomics data. It is worth noting that here you will use only a very small representation of the enormous variety of packages and software utilities (both in `Python` and other programming languages) currently available to work with genome sequences, annotations and variants.
 
 
-Installing gffutils package (you must have installed a `Python` distribution). In the command-line terminal ($), type::
-
-	$ pip install gffutils
+Installing `gffutils` package (you must have installed a `Python` distribution). In the command-line terminal ($), type::
+```bash
+pip install gffutils
+```
 		
 > `gffutils` is a `Python` package for working with GFF and GTF files in a hierarchical manner [https://pythonhosted.org/gffutils/index.html]. 
 
