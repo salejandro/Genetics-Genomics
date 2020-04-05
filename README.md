@@ -145,8 +145,9 @@ To see the complete feature, print the variable:
 
 ```python
 >>> print(mygene)
-19	ensembl_havana	gene	1000418	1009731	.	+	.	ID=gene:ENSG00000116032;Name=GRIN3B;biotype=protein_coding;description=glutamate receptor%2C ionotropic%2C N-methyl-D-aspartate 3B [Source:HGNC Symbol%3BAcc:16768];gene_id=ENSG00000116032;logic_name=ensembl_havana_gene;version=5
 ```
+	19	ensembl_havana	gene	1000418	1009731	.	+	.	ID=gene:ENSG00000116032;Name=GRIN3B;biotype=protein_coding;description=glutamate receptor%2C ionotropic%2C N-methyl-D-aspartate 3B [Source:HGNC Symbol%3BAcc:16768];gene_id=ENSG00000116032;logic_name=ensembl_havana_gene;version=5
+
 	
 To directly access to some the fields of this feature, you can type:
 
