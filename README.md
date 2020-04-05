@@ -125,7 +125,7 @@ db = gffutils.create_db(myGFF, ':memory:', merge_strategy="create_unique", keep_
 
 To learn some useful commands that allow us to access the database for the features of the gene of interest we can open a `Python` interactive session (>>>).  Open a command-line terminal in your computer and then type in `python`. Then type the above commands to create de data base:
 
-```python
+```
 >>> import gffutils
 >>> myGFF="Homo_sapiens.GRCh37.87.chromosome.19.gff3"
 >>> myFASTA="Homo_sapiens.GRCh37.dna.chromosome.19.fa"
@@ -137,21 +137,21 @@ Each annotation feature (gene, mRNA, exon, CDS, …), in specified in a line of 
 
 To access the gene ENSG00000116032, type:
 
-```python
+```
 >>> mygene=db['gene:ENSG00000116032']
 ```
 
 To see the complete feature, print the variable:
 
-```python
->>> print(mygene)
 ```
-	19	ensembl_havana	gene	1000418	1009731	.	+	.	ID=gene:ENSG00000116032;Name=GRIN3B;biotype=protein_coding;description=glutamate receptor%2C ionotropic%2C N-methyl-D-aspartate 3B [Source:HGNC Symbol%3BAcc:16768];gene_id=ENSG00000116032;logic_name=ensembl_havana_gene;version=5
+>>> print(mygene)
+19	ensembl_havana	gene	1000418	1009731	.	+	.	ID=gene:ENSG00000116032;Name=GRIN3B;biotype=protein_coding;description=glutamate receptor%2C ionotropic%2C N-methyl-D-aspartate 3B [Source:HGNC Symbol%3BAcc:16768];gene_id=ENSG00000116032;logic_name=ensembl_havana_gene;version=5
+```
 
 	
 To directly access to some the fields of this feature, you can type:
 
-```python
+```
 >>> mygene.source
 'ensembl_havana'
 >>> mygene.start
@@ -164,15 +164,16 @@ To directly access to some the fields of this feature, you can type:
 
 You can also access to the attributes stored in the 9th column, using the function `feature.attributes()`:
 
-```python
+```
 >>> mygene.attributes['Name']
 ['GRIN3B']
 >>> mygene.attributes['description']
 'glutamate receptor, ionotropic, N-methyl-D-aspartate 3B [Source:HGNC Symbol;Acc:16768]']
+```
 
 The same for a transcript feature:
 
-```python
+```
 >>> mytr=db['transcript:ENSG00000116032']
 >>> print(mytr)
 19	havana	mRNA	1011851	1013339	.	-	.	ID=transcript:ENST00000607316;Name=TMEM259-018;biotype=protein_coding;version=1;Parent=gene:ENSG00000182087;havana_transcript=OTTHUMT00000471311;havana_version=1;transcript_id=ENST00000607316
@@ -184,14 +185,14 @@ The same for a transcript feature:
 
 As you know, some features, such as transcripts, CDS or exons, have parent features. Transcripts, for example, have parent genes, while exons and CDS have parent transcripts. These ontologies are also specified in attributes and can be accessed with the same function:
 
-```python
+```
 >>> mytr.atributes[‘Parent’]
 ['gene:ENSG00000182087']
 ```
 
 Nevertheless, sometimes you need to access all, or part of the children features of the same parent at the same time. The package `gffutils` implements specific functions to do that: 
 
-```python
+```
 >>> mygene=db['gene:ENSG00000064666']
 >>> print(mygene)
 19	ensembl_havana	gene	1026298	1039068	.	+	.	ID=gene:ENSG00000064666;Name=CNN2;biotype=protein_coding;description=calponin 2 [Source:HGNC Symbol%3BAcc:2156];gene_id=ENSG00000064666;logic_name=ensembl_havana_gene;version=10
@@ -209,7 +210,7 @@ Nevertheless, sometimes you need to access all, or part of the children features
 
 > The function `db.children()` extracts all the children features of a parent. In the case above, we have iterated over all mRNAs of the gene ENSG00000064666. As you can see, this gene has seven different mRNAs. We can also print, for instance, all CDS included in the first of these mRNA (ENST00000263097) by typing:
 
-```python
+```
 >>> first_tr=db['transcript:ENST00000263097']
 >>> for cds in db.children(first_tr, featuretype='CDS', order_by='start'):
 ...		print cds
@@ -227,7 +228,7 @@ Nevertheless, sometimes you need to access all, or part of the children features
 
 At this point we are ready to return with our `Python` script. Remember that our objective is to obtain all the proteins encoded by the gene APOE, and in fact, we know now how to use `gffutils` to iterate over all mRNAs of a gene of interest. However, we need first the Ensembl ID of APOE to be able to access the features of this gene in the database. Of course, you can easely obtain this ID from genomic databases with a simple search in the web. Nevertheless, we can take advantage of our database at the same time that we learn another interesting `gffutils` function:
 
-```python
+```
 >>> for g in db.features_of_type('gene'):
 ...	name=g.attributes[‘Name’]
 ...	if name == ['APOE']:
