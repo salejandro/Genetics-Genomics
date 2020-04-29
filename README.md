@@ -40,7 +40,7 @@ Mac (you must to have installed Homebrew; https://brew.sh/):
 brew install git
 ```
 
-Linux and Mac:
+Linux and Mac (it may be necessary to install [autoconf](autoconf.md)):
 
 ```bash
 git clone https://github.com/vcftools/vcftools.git
