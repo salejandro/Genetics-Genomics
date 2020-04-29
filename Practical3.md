@@ -48,7 +48,7 @@ cd vcftools
 ./autogen.sh
 ./configure
 make
-make install
+sudo make install
 ```
 
 > `VCFtools` (https://github.com/vcftools/vcftools) is a program package designed for working with VCF files (https://vcftools.github.io/specs.html) [You many need sudo permissions to run make install].
