@@ -53,7 +53,7 @@ sudo make install
 
 > `VCFtools` (https://github.com/vcftools/vcftools) is a program package designed for working with VCF files (https://vcftools.github.io/specs.html) [You many need sudo permissions to run make install].
 
-##Genomics data files
+## Genomics data files
 Before working with genomic files, we need to install `wget`, a software package for retrieving remote files, and `samtools`, a suit of programs for interacting with high-throughput sequencing data:
 
 Linux:
