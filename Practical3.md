@@ -49,6 +49,7 @@ cd vcftools
 ./configure
 make
 sudo make install
+cd ..
 ```
 
 > `VCFtools` (https://github.com/vcftools/vcftools) is a program package designed for working with VCF files (https://vcftools.github.io/specs.html) [You many need sudo permissions to run make install].
