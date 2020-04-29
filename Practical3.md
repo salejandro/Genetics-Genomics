@@ -347,6 +347,8 @@ A very illustrative way to visualize SNP density across the APOE gene is to plot
 > xtick <- seq(0, 37, by=5)
 > axis(side=1, at=xtick, labels = seq(0,3700, by=500))
 > dev.off()
+> quit()
+Save workspace image? [y/n/c]: n
 ```
 
 Most VCF files also contain information on the frequency and geographic distribution of genetic variants. If we want to know, for example, the frequency of the two SNPs in the APOE gene associated with Alzheimer's disease. The simplest way to do that is to create a new VCF file that includes only the information of these SNPs using `VCFtools` and extract allele frequency information using the vcf-query (a utility that is distributed with `VCFtools`):
