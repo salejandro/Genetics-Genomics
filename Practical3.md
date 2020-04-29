@@ -93,7 +93,7 @@ Imagine that you are interested in obtaining all the proteins (the products of a
 Create a new text file (within the /myworkdir folder) and rename it as “APOE_proteins.py”. Then add this expression to the first line of this file:
 
 ```python
-!/usr/bin/env python
+#!/usr/bin/env python
 ```
 
 An easy way to quickly and efficiently to store and access the structural annotations of the chromosome 19 is to create a database of the features and relationships in the GFF3 file (Homo_sapiens.GRCh37.87.chromosome.19.gff3). We can use the package gffutils to build this database. Add these lines to the script to import this Python package:
@@ -174,7 +174,7 @@ You can also access to the attributes stored in the 9th column, using the functi
 The same for a transcript feature:
 
 ```
->>> mytr=db['transcript:ENSG00000116032']
+>>> mytr=db['transcript:ENST00000607316']
 >>> print(mytr)
 19	havana	mRNA	1011851	1013339	.	-	.	ID=transcript:ENST00000607316;Name=TMEM259-018;biotype=protein_coding;version=1;Parent=gene:ENSG00000182087;havana_transcript=OTTHUMT00000471311;havana_version=1;transcript_id=ENST00000607316
 >>> mytr.start
@@ -186,7 +186,7 @@ The same for a transcript feature:
 As you know, some features, such as transcripts, CDS or exons, have parent features. Transcripts, for example, have parent genes, while exons and CDS have parent transcripts. These ontologies are also specified in attributes and can be accessed with the same function:
 
 ```
->>> mytr.atributes[‘Parent’]
+>>> mytr.attributes[‘Parent’]
 ['gene:ENSG00000182087']
 ```
 
@@ -232,7 +232,7 @@ At this point we are ready to return with our `Python` script. Remember that our
 >>> for g in db.features_of_type('gene'):
 ...	name=g.attributes[‘Name’]
 ...	if name == ['APOE']:
-...		id=g.attributtes[‘ID’]
+...		id=g.attributes[‘ID’]
 ...		print id
 ['gene:ENSG00000130203']
 ```
@@ -250,9 +250,9 @@ file = open(myGENE+'_proteins.fasta','w')
 ```
 
 We can now use gffutils to iterate over all mRNAs of the APOE gene:
-apoe='gene:ENSG00000130203'
 
 ```python
+apoe='gene:ENSG00000130203'
 for mrna in db.children(apoe, featuretype='mRNA', order_by='start'):
 	print >>file, '>'+apoe+';'+ mrna.attributes['ID']
 ```
@@ -272,7 +272,7 @@ And which actions we need to obtain the complete CDS of each transcript?
 First we need to extract the DNA sequence of each children CDS feature of the same transcript from the file “Homo_sapiens.GRCh37.dna.chromosome.19.fa” using the `gffutils` function `feature.sequence()`, and then connect them in the same sequence. 
 
 ```python
-		seq = cds.sequence(myFasta)
+		seq = cds.sequence(myFASTA)
 		string_cds += seq
 		complete_cds = Seq(string_cds, generic_dna)
 ```
