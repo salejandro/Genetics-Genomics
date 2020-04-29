@@ -1,7 +1,7 @@
 To install autoconf in Linux:
 
 ```sudo apt-get install autoconf
-'''
+```
 or (recomended)
 
 ```sudo apt-get install build-essential
