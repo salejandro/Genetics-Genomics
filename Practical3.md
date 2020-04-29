@@ -187,7 +187,7 @@ The same for a transcript feature:
 As you know, some features, such as transcripts, CDS or exons, have parent features. Transcripts, for example, have parent genes, while exons and CDS have parent transcripts. These ontologies are also specified in attributes and can be accessed with the same function:
 
 ```
->>> mytr.attributes[‘Parent’]
+>>> mytr.attributes['Parent']
 ['gene:ENSG00000182087']
 ```
 
