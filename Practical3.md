@@ -77,14 +77,14 @@ wget -qO- ftp://ftp.ensembl.org/pub/grch37/current/fasta/homo_sapiens/dna/Homo_s
 wget -qO- ftp://ftp.ensembl.org/pub/grch37/current/gff3/homo_sapiens/Homo_sapiens.GRCh37.87.chromosome.19.gff3.gz | bgzip -d > Homo_sapiens.GRCh37.87.chromosome.19.gff3
 ```
 
-You can take a first look the first part (=the head; in this case the first 500 lines) of these files using the UNIX command head:
+You can take a first look the first part (=the head; in this case the first 1500 lines) of these files using the UNIX command head:
 
 ```bash
-head -500 Homo_sapiens.GRCh37.87.chromosome.19.gff3
-head -500 Homo_sapiens.GRCh37.dna.chromosome.19.fa
+head -1500 Homo_sapiens.GRCh37.87.chromosome.19.gff3
+head -1500 Homo_sapiens.GRCh37.dna.chromosome.19.fa
 ```
 
-##Examples
+## Examples
 
 **EXAMPLE 1**
 
