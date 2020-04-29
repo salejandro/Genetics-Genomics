@@ -250,7 +250,7 @@ To exit from python terminal:
 >>>exit()
 ```
 
-Now, it would be interesting to create a file named “APOE_proteins.fas” to save the proteins encoded by the APOE gene (=the output file for our script). Add this new line to the script:
+Now, it would be interesting to create a file named “APOE_proteins.fas” to save the proteins encoded by the APOE gene (=the output file for our script). Add this new line to the script "APOE_proteins.py":
 
 ```python
 file = open(myGENE+'_proteins.fasta','w')
