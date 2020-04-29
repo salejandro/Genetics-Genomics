@@ -281,7 +281,7 @@ First we need to extract the DNA sequence of each children CDS feature of the sa
 ```python
 		seq = cds.sequence(myFASTA)
 		string_cds += seq
-		complete_cds = Seq(string_cds, generic_dna)
+	complete_cds = Seq(string_cds, generic_dna)
 ```
 
 > The variable `string_cds` contains just a `Python` string with A, T, C, and G symbols. We used the Biopython object `Seq()` to combine the string with a biological alphabet, in this case the generic alphabet for DNA sequences.
@@ -289,15 +289,15 @@ First we need to extract the DNA sequence of each children CDS feature of the sa
 The last line introduced in our script closes the for loop over the CDS of then same transcript. Next step would be to translate this sequence. We can use one of the many methods incorporated in `Seq()`,the method `translate()`:
 
 ```python
-		protein = complete_cds.translate()
+	protein = complete_cds.translate()
 ```
 
 Finally, we print the protein in the output file, just after the FASTA formatted line with the IDs, and close the file:
 
 ```python
-		for aa in range(0, len(protein), 60):
-			print >>file, protein[aa:aa+60]
-		file.close()
+	for aa in range(0, len(protein), 60):
+		print >>file, protein[aa:aa+60]
+file.close()
 ```
 
 > Using this `for` loop, we are printing the protein sequences in lines of equal length (60 amino acids per line). 
