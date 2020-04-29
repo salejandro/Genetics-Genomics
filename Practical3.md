@@ -338,7 +338,7 @@ vcftools --vcf APOE.vcf --SNPdensity 100 --out APOE
 
 > In this particular case, we are estimating SNP density across the APOE gene in non-overlapping windows of 100 pb. The number of SNP both per 100 bp window and per kb, are saved in the file “APOE.snpden” [The program prints some warnings in the stdout about INFO entries, don’t worry about that].
 
-A very illustrative way to visualize SNP density across the APOE gene is to plot `VCFtools` results.  One possibility is to use a plotting function in `R`(>). Open a command-line or terminal in your computer and then type `R. Use these `R` commands to generate a very simple plot:
+A very illustrative way to visualize SNP density across the APOE gene is to plot `VCFtools` results.  One possibility is to use a plotting function in `R`(>). Open a command-line or terminal in your computer and then type `R`. Use these `R` commands to generate a very simple plot:
 
 ```R
 > pdf("SNPdensity.pdf")
@@ -351,13 +351,20 @@ A very illustrative way to visualize SNP density across the APOE gene is to plot
 Save workspace image? [y/n/c]: n
 ```
 
-Most VCF files also contain information on the frequency and geographic distribution of genetic variants. If we want to know, for example, the frequency of the two SNPs in the APOE gene associated with Alzheimer's disease. The simplest way to do that is to create a new VCF file that includes only the information of these SNPs using `VCFtools` and extract allele frequency information using the vcf-query (a utility that is distributed with `VCFtools`):
+Most VCF files also contain information on the frequency and geographic distribution of genetic variants. We could be interested, for ìnstance, in the frequency of the two SNPs in the APOE gene that are associated with Alzheimer's disease. The simplest way to do that is to create a new VCF file that includes only the information of these SNPs using `VCFtools` and extract allele frequency information using the vcf-query (a utility that is distributed with `VCFtools`). First, you need to create the text file, "SNP.txt", which must include dbSNP identifiers (one idenfifier per line):
+
+```bash
+cat SNP.txt
+rs429358
+rs7412
+```
+To extract the information for these SNPs from the VCF file:
 
 ```bash
 vcftools --vcf APOE.vcf --snps SNP.txt --recode --recode-INFO-all --out SNPs_only
 ```
 
-> The file “SNPs.txt” is a file with the list of SNPs (dbSNP identifiers). Note that when we create a new VCF file, we must apply the `–recode` and `--recode-INFO-all` option to write out the variants that pass-through filters and to include all data from the INFO fields in the output.
+> Note that when we create a new VCF file, we must apply the `–recode` and `--recode-INFO-all` option to write out the variants that pass-through filters and to include all data from the INFO fields in the output.
   
 Using the new generated VCF file, we can extract the frequency of the SNPs in the populations of iterest:
 
