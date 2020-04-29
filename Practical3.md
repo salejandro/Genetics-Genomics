@@ -300,9 +300,9 @@ http://www.ensembl.org/Homo_sapiens/Gene/Summary?db=core;g=ENSG00000130203;r=19:
 
 **EXAMPLE 2**
 
-EIn this second example, you will see how to extract information form a VCF file. We will use as an example, the VCF of the human chromosome 19 from the 1000 genomes project phase 3; https://www.internationalgenome.org/category/phase-3/) therefore, information about variants. The specific objective is to estimate SNP diversity in the APOE gene and obtain the frequency of its two common allelic variants (rs429358 and rs7412) in African and European populations.
+In this second example, you will see how to extract information from a VCF file. We will use as an example, the VCF of the human chromosome 19 from the 1000 genomes project phase 3; https://www.internationalgenome.org/category/phase-3/) therefore, information about variants. The specific objective is to estimate SNP diversity in the APOE gene and obtain the frequency of its two common allelic variants (rs429358 and rs7412) in African and European populations.
 
-Of course, first we should obtain the VCF file, or at least the part of this file that corresponds to the APOE gene. The Htlib project, which is distributed with samtools, includes `tabix`, an interesting command-line utility to download ONLY the region of interest from a VCF file. To do that, `tabix` needs the specific coordinates of the region in the scaffold or chromosome. Again, we can use `gffutils` (e.g. directly in the `Python` console; still in the /myworkdir directory) to obtain these coordinates:
+Of course, first we should obtain the VCF file, or at least the part of this file that corresponds to the APOE gene. The Htslib project, which is distributed with samtools, includes `tabix`, an interesting command-line utility to download ONLY the region of interest from a VCF file. To do that, `tabix` needs the specific coordinates of the region in the scaffold or chromosome. Again, we can use `gffutils` (e.g. directly in the `Python` console; still in the /myworkdir directory) to obtain these coordinates:
 
 ```python
 >>> import gffutils
