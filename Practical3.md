@@ -1,4 +1,4 @@
-# Gentetics&Genomics
+# Gentetics&Genomics 2020
 
 # Introduction to genomics data editing and manipulation
 
