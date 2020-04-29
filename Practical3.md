@@ -244,7 +244,13 @@ At this point we are ready to return with our `Python` script. Remember that our
 
 **Let’s continue here with our script**
 
-It would be interesting to create a file named “APOE_proteins.fas” to save the proteins encoded by the APOE gene (=the output file for our script). Add this new line to the script:
+To exit from python terminal:
+
+```
+>>>exit()
+```
+
+Now, it would be interesting to create a file named “APOE_proteins.fas” to save the proteins encoded by the APOE gene (=the output file for our script). Add this new line to the script:
 
 ```python
 file = open(myGENE+'_proteins.fasta','w')
