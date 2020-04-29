@@ -380,4 +380,11 @@ In `vcf-query`, we can access to the `INFO` field (%INFO) of the VCF file and pr
 bcftools view -h APOE.vcf
 ```
 
+#### Practial exercise
+
+1. How many PROTEIN-CODING genes in the human chromosome 19 have ONLY ONE transcript?
+
+2. How many of these single-transcript protein-coding genes have 1, 2, 3 or more than 3 exons? Create a R plot with the distribution of the NUMBER OF EXONS per gene.  
+
+
 
