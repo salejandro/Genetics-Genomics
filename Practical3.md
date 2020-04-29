@@ -231,9 +231,9 @@ At this point we are ready to return with our `Python` script. Remember that our
 
 ```
 >>> for g in db.features_of_type('gene'):
-...	name=g.attributes[‘Name’]
+...	name=g.attributes['Name']
 ...	if name == ['APOE']:
-...		id=g.attributes[‘ID’]
+...		id=g.attributes['ID']
 ...		print id
 ['gene:ENSG00000130203']
 ```
