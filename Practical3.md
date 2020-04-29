@@ -380,7 +380,7 @@ In `vcf-query`, we can access to the `INFO` field (%INFO) of the VCF file and pr
 bcftools view -h APOE.vcf
 ```
 
-#### Practial exercise
+### PRACTICAL EXERCISE
 
 1. How many PROTEIN-CODING genes in the human chromosome 19 have ONLY ONE transcript?
 
