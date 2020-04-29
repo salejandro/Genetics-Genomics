@@ -1,6 +1,6 @@
 ## Gentetics&Genomics 2020
 
-## Introduction to genomics data editing and manipulation
+## Practical 3: Introduction to genomics data editing and manipulation
 
 #### MAIN GOALS 
 The objective of these two sessions is to learn some basic but useful practical tricks for genome-scale data mining. To do that, you will practice with a few of the many bioinformatics utilities commonly used to genome data handling and manipulation. The lesson is divided in three main parts. The first part (session 1, the weed of May 4th), will be dedicated to install all required packages and software, to obtain the genomics data files to work with, and to see some simple examples of how to extract features and retrieve valuable information form these files. The second part (homework), will consist of solving a practical exercise (see below) based on the same tools and data retrieved in the first session; students must deliver (June 5th) a small report explaining briefly the workflow and the scripts used to find the solution. Finally, in the last part (session 2, June 10th) we will provide the appropriate feedback for the correct solution of the exercise.
