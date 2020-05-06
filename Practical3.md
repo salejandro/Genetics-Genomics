@@ -94,12 +94,12 @@ Imagine that you are interested in obtaining all the proteins (the products of a
 Create a new text file (within the /myworkdir folder) and rename it as “APOE_proteins.py”. Then add this expression to the first line of this file:
 
 ```python
-#!/usr/bin/env python
+#!/usr/bin/python3
 ```
 
 An easy way to quickly and efficiently to store and access the structural annotations of the chromosome 19 is to create a database of the features and relationships in the GFF3 file (Homo_sapiens.GRCh37.87.chromosome.19.gff3). We can use the package gffutils to build this database. Add these lines to the script to import this Python package:
 
-```python
+```python3
 import gffutils
 from Bio.Seq import Seq
 from Bio.Alphabet import generic_dna
@@ -110,7 +110,7 @@ from Bio import BiopythonWarning
 
 Before creating the database, and for practical purposes, it is recommended to store data file names into variables:
 	
-```python
+```python3
 myGFF="Homo_sapiens.GRCh37.87.chromosome.19.gff3"
 myFASTA="Homo_sapiens.GRCh37.dna.chromosome.19.fa"
 myGENE="APOE"
@@ -118,7 +118,7 @@ myGENE="APOE"
 
 Now we are ready to build the database with the genomic features of the human chromosome 19. To do that, we will use the function `gffutils.create_db()`
 
-```python
+```python3
 db = gffutils.create_db(myGFF, ':memory:', merge_strategy="create_unique", keep_order=True)
 ```
 
@@ -252,23 +252,23 @@ To exit from python terminal:
 
 Now, it would be interesting to create a file named “APOE_proteins.fas” to save the proteins encoded by the APOE gene (=the output file for our script). Add this new line to the script "APOE_proteins.py":
 
-```python
+```python3
 file = open(myGENE+'_proteins.fasta','w')
 ```
 
 We can now use gffutils to iterate over all mRNAs of the APOE gene:
 
-```python
+```python3
 apoe='gene:ENSG00000130203'
 for mrna in db.children(apoe, featuretype='mRNA', order_by='start'):
-	print >>file, '>'+apoe+';'+ mrna.attributes['ID']
+	print ('>'+apoe+';'+ str(mrna.attributes['ID']), file=file)
 ```
 
 > Note that we have added an instruction so that, for each mRNA, the script writes a line in the output file that begins with a symbol ">" and that contains the Ensembl IDs of the gene and the transcript. As you know, this line will allow the output format to be FASTA.
 
 To obtain the proteins encoded by these mRNAs, we first need to extract their coding sequences (CDS). We must therefore introduce a nested loop to iterate over the CDS features of each transcript:
 
-```python
+```python3
 	string_cds=''
 	for cds in db.children(mrna, featuretype='CDS', order_by='start'):
 ```
@@ -278,7 +278,7 @@ At this point, the instructions we add will apply to each CDS of each mRNA of th
 And which actions we need to obtain the complete CDS of each transcript?
 First we need to extract the DNA sequence of each children CDS feature of the same transcript from the file “Homo_sapiens.GRCh37.dna.chromosome.19.fa” using the `gffutils` function `feature.sequence()`, and then connect them in the same sequence. 
 
-```python
+```python3
 		seq = cds.sequence(myFASTA)
 		string_cds += seq
 	complete_cds = Seq(string_cds, generic_dna)
@@ -288,15 +288,15 @@ First we need to extract the DNA sequence of each children CDS feature of the sa
 
 The last line introduced in our script closes the for loop over the CDS of then same transcript. Next step would be to translate this sequence. We can use one of the many methods incorporated in `Seq()`,the method `translate()`:
 
-```python
+```python3
 	protein = complete_cds.translate()
 ```
 
 Finally, we print the protein in the output file, just after the FASTA formatted line with the IDs, and close the file:
 
-```python
+```python3
 	for aa in range(0, len(protein), 60):
-		print >>file, protein[aa:aa+60]
+		print(protein[aa:aa+60], file=file)
 file.close()
 ```
 
