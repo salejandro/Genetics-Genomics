@@ -169,7 +169,7 @@ You can also access to the attributes stored in the 9th column, using the functi
 >>> mygene.attributes['Name']
 ['GRIN3B']
 >>> mygene.attributes['description']
-'glutamate receptor, ionotropic, N-methyl-D-aspartate 3B [Source:HGNC Symbol;Acc:16768]']
+['glutamate receptor, ionotropic, N-methyl-D-aspartate 3B [Source:HGNC Symbol;Acc:16768]']
 ```
 
 The same for a transcript feature:
@@ -214,7 +214,7 @@ Nevertheless, sometimes you need to access all, or part of the children features
 ```
 >>> first_tr=db['transcript:ENST00000263097']
 >>> for cds in db.children(first_tr, featuretype='CDS', order_by='start'):
-...		print cds
+...		print(cds)
 ...
 19	ensembl_havana	CDS	1026661	1026723	.	+	0	ID=CDS:ENSP00000263097;Parent=transcript:ENST00000263097;protein_id=ENSP00000263097
 19	ensembl_havana	CDS	1031070	1031191	.	+	0	ID=CDS:ENSP00000263097;Parent=transcript:ENST00000263097;protein_id=ENSP00000263097
@@ -234,7 +234,7 @@ At this point we are ready to return with our `Python` script. Remember that our
 ...	name=g.attributes['Name']
 ...	if name == ['APOE']:
 ...		id=g.attributes['ID']
-...		print id
+...		print (id)
 ['gene:ENSG00000130203']
 ```
 
