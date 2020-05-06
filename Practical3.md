@@ -94,7 +94,7 @@ Imagine that you are interested in obtaining all the proteins (the products of a
 Create a new text file (within the /myworkdir folder) and rename it as “APOE_proteins.py”. Then add this expression to the first line of this file:
 
 ```python
-#!/usr/bin/python3
+#!/usr/bin/env python3
 ```
 
 An easy way to quickly and efficiently to store and access the structural annotations of the chromosome 19 is to create a database of the features and relationships in the GFF3 file (Homo_sapiens.GRCh37.87.chromosome.19.gff3). We can use the package gffutils to build this database. Add these lines to the script to import this Python package:
