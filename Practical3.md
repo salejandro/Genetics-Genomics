@@ -311,7 +311,7 @@ In this second example, you will see how to extract information from a VCF file.
 
 Of course, first we should obtain the VCF file, or at least the part of this file that corresponds to the APOE gene. The Htslib project, which is distributed with samtools, includes `tabix`, an interesting command-line utility to download ONLY the region of interest from a VCF file. To do that, `tabix` needs the specific coordinates of the region in the scaffold or chromosome. Again, we can use `gffutils` (e.g. directly in the `Python` console; still in the /myworkdir directory) to obtain these coordinates:
 
-```python
+```
 >>> import gffutils
 >>> myGFF="Homo_sapiens.GRCh37.87.chromosome.19.gff3"
 >>> db = gffutils.create_db(myGFF, ':memory:', merge_strategy="create_unique", keep_order=True)
@@ -322,7 +322,7 @@ Of course, first we should obtain the VCF file, or at least the part of this fil
 45412650
 ```
 
-Close the `Python` console, open a new command-line terminal in your computer and type:
+Close the `Python` console (remember the command `exit()`, open a new command-line terminal in your computer and type:
 
 ```bash
 tabix -h ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/ALL.chr19.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz 19:45409011-45412650 > APOE.vcf 
