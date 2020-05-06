@@ -3,17 +3,44 @@
 ## Practical 3: Introduction to genomics data editing and manipulation
 
 #### MAIN GOALS 
-The objective of these two sessions is to learn some basic but useful practical tricks for genome-scale data mining. To do that, you will practice with a few of the many bioinformatics utilities commonly used to genome data handling and manipulation. The lesson is divided in three main parts. The first part (session 1, the weed of May 4th), will be dedicated to install all required packages and software, to obtain the genomics data files to work with, and to see some simple examples of how to extract features and retrieve valuable information form these files. The second part (homework), will consist of solving a practical exercise (see below) based on the same tools and data retrieved in the first session; students must deliver (June 5th) a small report explaining briefly the workflow and the scripts used to find the solution. Finally, in the last part (session 2, June 10th) we will provide the appropriate feedback for the correct solution of the exercise.
+The objective of these two sessions is to learn some basic but useful practical tricks for genome-scale data mining. To do that, you will practice with a few of the many bioinformatics utilities commonly used to genome data handling and manipulation. The lesson is divided in three main parts. The first part (session 1, May 5th), will be dedicated to install all required packages and software, to obtain the genomics data files to work with, and to see some simple examples of how to extract features and retrieve valuable information form these files. The second part (homework), will consist of solving a practical exercise (see below) based on the same tools and data retrieved in the first session; students must deliver (June 5th) a small report explaining briefly the workflow and the scripts used to find the solution. Finally, in the last part (session 2, June 10th) we will provide the appropriate feedback for the correct solution of the exercise.
 
 #### SESSION 1
 #### Installing packages and software utilities
 The first step consists in to download and install the packages and bioinformatics tools necessary to work with genomics data. It is worth noting that here you will use only a very small representation of the enormous variety of packages and software utilities (both in `Python` and other programming languages) currently available to work with genome sequences, annotations and variants.
 
+---
 
-Installing `gffutils` package (you must have installed `Python 3.x` distribution). In the command-line terminal, type::
+**HINTS:** 
+
+1. You will see different simbols in code blocks through the document, the meaning of which is:
+	
+	| Symbol | Meaning | How to enter |
+	| ---  | --- | --- |
+	|  $  | Command-line terminal | Open the application "terminal" (in Mac) or type `Ctl+Alt+t` (in Linux) |
+	| >>> | Python3 console | In the command-line terminal type `phyton3`|
+	
+If none of these symbols appear at the beginning of each line in a code block, you have to add this code to the text file where you are writting the `Python` script. 
+
+2. Any command preceded by the word `sudo` causes the command to run with root privileges (some times is necessary). In these cases you will be asked for your administrator password.
+
+3. Sometimes the code you have to enter in the terminal requires entering and leaving directories, please, write all the commands in the code blocks correctly (including `mkdir` `cd` and `cd ..` commands).
+
+4. When in the code block there are several lines that start with ($) or (>>>) (=different commands), execute one by one (of course, without writing the terminal symbols)
+
+---
+
+Installing `pip3` package (**you must have installed `Python 3.x` distribution**). In the **command-line terminal ($)**, type:
 
 ```bash
-pip3 install gffutils
+$ sudo apt update
+$ sudo apt install python3-pip
+```
+
+Installing `gffutils` package:
+
+```bash
+$ pip3 install gffutils
 ```
 		
 > `gffutils` is a `Python` package for working with GFF and GTF files in a hierarchical manner [https://pythonhosted.org/gffutils/index.html]. 
@@ -21,52 +48,56 @@ pip3 install gffutils
 Installing `BioPython` (required for some `gffutils` utilities):
 
 ```bash
-pip3 install biopython
+$ pip3 install biopython
 ```
 
 > `BioPython` is a set of freely available tools for biological computation written in `Python` (https://biopython.org/).
 
-Installing `VCFtools` from GitHub platform (required to work with genomic variants):
+Installing `VCFtools` from GitHub platform (required to work with genomic variants). First, we need to install the tool `git`, which allows cloning (download) the repository of `VCFtools` in our computer. In the **command-line terminal ($)**, type:
 
 Linux:
 
 ```bash
-sudo apt install git
+$ sudo apt install git
 ```
 
 Mac (you must to have installed Homebrew; https://brew.sh/):
 
 ```bash
-brew install git
+$ brew install git
 ```
 
-Linux and Mac (it may be necessary to install [autoconf](autoconf.md)):
+Now, we can download and install `VCFtools`. **HINT:** **You just have to write the commands below in the terminal one y one**. The `git` command allows downloading and unzip the folder with the program files, the `cd` command is for entering the uncompressed program directory, and the rest of the commands serve to install `vcftools` in your computer. Do not forget to leave the installation directory with the command `cd ..`. If you don't have `autoconf` installed, it may be necessary to install it. Here are the instructions: [autoconf](autoconf.md))
+
+Linux and Mac
 
 ```bash
-git clone https://github.com/vcftools/vcftools.git
-cd vcftools
-./autogen.sh
-./configure
-make
-sudo make install
-cd ..
+$ git clone https://github.com/vcftools/vcftools.git
+$ cd vcftools
+$ ./autogen.sh
+$ ./configure
+$ make
+$ sudo make install
+$ cd ..
 ```
 
 > `VCFtools` (https://github.com/vcftools/vcftools) is a program package designed for working with VCF files (https://vcftools.github.io/specs.html) [You many need sudo permissions to run make install].
 
 #### Genomics data files
-Before working with genomic files, we need to install `wget`, a software package for retrieving remote files, and `samtools`, a suit of programs for interacting with high-throughput sequencing data:
+Before working with genomic files, we need to install `wget`, a software package for retrieving remote files, and `samtools`, a suit of programs for interacting with high-throughput sequencing data. To do that, in the command-line terminal type:
 
 Linux:
 
 ```bash
-sudo apt install wget samtools
+$ sudo apt install wget 
+$ sudo apt install samtools
 ```
 
 Mac: 
 
 ```bash
-brew install wget samtools
+$ brew install wget
+$ brew install samtools
 ```
 
 You will download genome sequences (in FASTA format), and feature annotations (in GFF3 format; https://github.com/The-Sequence-Ontology/Specifications/blob/master/gff3.md) of the human chromosome 19 (=GRCh37 assembly) from Ensembl FTP server (http://www.ensembl.org/info/data/ftp/index.html) [assembly version must be exactly the same for both files!]. Create a new working directory and use the wget and bgzip (from `samtools` suite) commands to download and decompress the genomic files:
@@ -91,13 +122,13 @@ head -1500 Homo_sapiens.GRCh37.dna.chromosome.19.fa
 
 Imagine that you are interested in obtaining all the proteins (the products of all mRNAs) encoded by a gene of interest (e.g. the human gene APOE). [For simplicity, we will assume that we know that the gene is on the human chromosome 19]. You can write a Python script for this task:
 
-Create a new text file (within the /myworkdir folder) and rename it as “APOE_proteins.py”. Then add this expression to the first line of this file:
+**Create a new text file (within the /myworkdir folder) and rename it as “APOE_proteins.py”**. Then, open the file and add this expression to the first line:
 
 ```python
 #!/usr/bin/env python3
 ```
 
-An easy way to quickly and efficiently to store and access the structural annotations of the chromosome 19 is to create a database of the features and relationships in the GFF3 file (Homo_sapiens.GRCh37.87.chromosome.19.gff3). We can use the package gffutils to build this database. Add these lines to the script to import this Python package:
+An easy way to quickly and efficiently to store and access the structural annotations of the chromosome 19 is to create a database of the features and relationships in the GFF3 file (Homo_sapiens.GRCh37.87.chromosome.19.gff3). We can use the package `gffutils` to build this database. To import this `Python` package add these lines to the script:
 
 ```python3
 import gffutils
