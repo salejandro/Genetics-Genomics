@@ -67,7 +67,7 @@ Mac (you must to have installed Homebrew; https://brew.sh/):
 $ brew install git
 ```
 
-Now, we can download and install `VCFtools`. **HINT:** **You just have to write the commands below in the terminal one y one**. The `git` command allows downloading and unzip the folder with the program files, the `cd` command is for entering the uncompressed program directory, and the rest of the commands serve to install `vcftools` in your computer. Do not forget to leave the installation directory with the command `cd ..`. If you don't have `autoconf` installed, it may be necessary to install it. Here are the instructions: [autoconf](autoconf.md))
+Now, we can download and install `VCFtools`. **HINT:** **You just have to write the commands below in the terminal one y one**. The `git` command allows downloading and unzip the folder with the program files, the `cd` command is for entering the uncompressed program directory, and the rest of the commands serve to install `vcftools` in your computer. Do not forget to leave the installation directory with the command `cd ..`. If you don't have `autoconf` installed, it may be necessary to install it. Here are the instructions: [autoconf](autoconf.md)
 
 Linux and Mac
 
