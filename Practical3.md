@@ -18,8 +18,8 @@ The first step consists in to download and install the packages and bioinformati
 	| Symbol | Meaning | How to enter |
 	| ---  | --- | --- |
 	|  $  | Command-line terminal | Open the application "terminal" (in Mac) or type `Ctl+Alt+t` (in Linux) |
-	| >>> | Python3 console | In the command-line terminal type `phyton3`|
-	|  >  | R console | In the command-line terminal type `R`|
+	| >>> | Python3 console | In the command-line terminal, type `phyton3`|
+	|  >  | R console | In the command-line terminal, type `R`|
 	
 If none of these symbols appear at the beginning of each line in a code block, you have to add this code to the text file where you are writting the `Python` script. 
 
