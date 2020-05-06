@@ -10,10 +10,10 @@ The objective of these two sessions is to learn some basic but useful practical 
 The first step consists in to download and install the packages and bioinformatics tools necessary to work with genomics data. It is worth noting that here you will use only a very small representation of the enormous variety of packages and software utilities (both in `Python` and other programming languages) currently available to work with genome sequences, annotations and variants.
 
 
-Installing `gffutils` package (you must have installed a `Python` distribution). In the command-line terminal, type::
+Installing `gffutils` package (you must have installed `Python 3.x` distribution). In the command-line terminal, type::
 
 ```bash
-pip install gffutils
+pip3 install gffutils
 ```
 		
 > `gffutils` is a `Python` package for working with GFF and GTF files in a hierarchical manner [https://pythonhosted.org/gffutils/index.html]. 
@@ -21,7 +21,7 @@ pip install gffutils
 Installing `BioPython` (required for some `gffutils` utilities):
 
 ```bash
-pip install biopython
+pip3 install biopython
 ```
 
 > `BioPython` is a set of freely available tools for biological computation written in `Python` (https://biopython.org/).
@@ -124,7 +124,7 @@ db = gffutils.create_db(myGFF, ':memory:', merge_strategy="create_unique", keep_
 
 > The database (db) is stored in the memory of the computer (`':memory:'`). The `merge_strategy` command ensures that each line of the GFF file maintain separate accessible keys (recommendable here to have all genomics information in the database). 
 
-To learn some useful commands that allow us to access the database for the features of the gene of interest we can open a `Python` interactive session (>>>).  Open a command-line terminal in your computer and then type in `python`. Then type the above commands to create de data base:
+To learn some useful commands that allow us to access the database for the features of the gene of interest we can open a `Python 3.x` interactive session (>>>).  Open a command-line terminal in your computer and then type in `python3`. Then type the above commands to create de data base:
 
 ```
 >>> import gffutils
