@@ -19,6 +19,7 @@ The first step consists in to download and install the packages and bioinformati
 	| ---  | --- | --- |
 	|  $  | Command-line terminal | Open the application "terminal" (in Mac) or type `Ctl+Alt+t` (in Linux) |
 	| >>> | Python3 console | In the command-line terminal type `phyton3`|
+	|  >  | R console | In the command-line terminal type `R`|
 	
 If none of these symbols appear at the beginning of each line in a code block, you have to add this code to the text file where you are writting the `Python` script. 
 
@@ -27,6 +28,10 @@ If none of these symbols appear at the beginning of each line in a code block, y
 3. Sometimes the code you have to enter in the terminal requires entering and leaving directories, please, write all the commands in the code blocks correctly (including `mkdir` `cd` and `cd ..` commands).
 
 4. When in the code block there are several lines that start with ($) or (>>>) (=different commands), execute one by one (of course, without writing the terminal symbols)
+
+5. In the `Python3` console, the simbol `...` means that the console wait for you to introduce a new line (e.g. in loops). **Remember that in `Python` indentation is essential to structure the code**, respect all indented lines in code blocks and in the script.
+
+6. In many cases the output of a command appears in the code block just below the executed command. Do not confuse with a new command to ejecute, just check your results and compare.
 
 ---
 
@@ -103,17 +108,17 @@ $ brew install samtools
 You will download genome sequences (in FASTA format), and feature annotations (in GFF3 format; https://github.com/The-Sequence-Ontology/Specifications/blob/master/gff3.md) of the human chromosome 19 (=GRCh37 assembly) from Ensembl FTP server (http://www.ensembl.org/info/data/ftp/index.html) [assembly version must be exactly the same for both files!]. Create a new working directory and use the wget and bgzip (from `samtools` suite) commands to download and decompress the genomic files:
 
 ```bash
-mkdir myworkdir
-cd myworkdir
-wget -qO- ftp://ftp.ensembl.org/pub/grch37/current/fasta/homo_sapiens/dna/Homo_sapiens.GRCh37.dna.chromosome.19.fa.gz | bgzip -d > Homo_sapiens.GRCh37.dna.chromosome.19.fa
-wget -qO- ftp://ftp.ensembl.org/pub/grch37/current/gff3/homo_sapiens/Homo_sapiens.GRCh37.87.chromosome.19.gff3.gz | bgzip -d > Homo_sapiens.GRCh37.87.chromosome.19.gff3
+$ mkdir myworkdir
+$ cd myworkdir
+$ wget -qO- ftp://ftp.ensembl.org/pub/grch37/current/fasta/homo_sapiens/dna/Homo_sapiens.GRCh37.dna.chromosome.19.fa.gz | bgzip -d > Homo_sapiens.GRCh37.dna.chromosome.19.fa
+$ wget -qO- ftp://ftp.ensembl.org/pub/grch37/current/gff3/homo_sapiens/Homo_sapiens.GRCh37.87.chromosome.19.gff3.gz | bgzip -d > Homo_sapiens.GRCh37.87.chromosome.19.gff3
 ```
 
 You can take a first look the first part (=the head; in this case the first 1500 lines) of these files using the UNIX command head:
 
 ```bash
-head -1500 Homo_sapiens.GRCh37.87.chromosome.19.gff3
-head -1500 Homo_sapiens.GRCh37.dna.chromosome.19.fa
+$ head -1500 Homo_sapiens.GRCh37.87.chromosome.19.gff3
+$ head -1500 Homo_sapiens.GRCh37.dna.chromosome.19.fa
 ```
 
 #### Examples
@@ -155,7 +160,7 @@ db = gffutils.create_db(myGFF, ':memory:', merge_strategy="create_unique", keep_
 
 > The database (db) is stored in the memory of the computer (`':memory:'`). The `merge_strategy` command ensures that each line of the GFF file maintain separate accessible keys (recommendable here to have all genomics information in the database). 
 
-To learn some useful commands that allow us to access the database for the features of the gene of interest we can open a `Python 3.x` interactive session (>>>).  Open a command-line terminal in your computer and then type in `python3`. Then type the above commands to create de data base:
+To learn some useful commands that allow us to access the database for the features of the gene of interest we can open a `Python 3.x` interactive session (>>>).  **To enter in the `Python3` console, open a command-line terminal in your computer and then type in `python3`**. Then type the above commands to create de data base:
 
 ```
 >>> import gffutils
@@ -356,7 +361,7 @@ Of course, first we should obtain the VCF file, or at least the part of this fil
 Close the `Python` console (remember the command `exit()`, open a new command-line terminal in your computer and type:
 
 ```bash
-tabix -h ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/ALL.chr19.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz 19:45409011-45412650 > APOE.vcf 
+$ tabix -h ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/ALL.chr19.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz 19:45409011-45412650 > APOE.vcf 
 ```
 
 > The variants annotated in the region specified in the coordinates 19:45409011-45412650 are now in the file “APOE.vcf” in our computer. 
@@ -364,7 +369,7 @@ tabix -h ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/ALL.chr19.pha
 Next step is to estimate nucleotide diversity in the APOE gene region. We can obtain, for instance, the distribution of this diversity across the gene using VCFtools, another interesting ngs program that includes a flag to calculate SNP density:
 
 ```bash
-vcftools --vcf APOE.vcf --SNPdensity 100 --out APOE
+$ vcftools --vcf APOE.vcf --SNPdensity 100 --out APOE
 ```
 
 > In this particular case, we are estimating SNP density across the APOE gene in non-overlapping windows of 100 pb. The number of SNP both per 100 bp window and per kb, are saved in the file “APOE.snpden” [The program prints some warnings in the stdout about INFO entries, don’t worry about that].
@@ -385,14 +390,13 @@ Save workspace image? [y/n/c]: n
 Most VCF files also contain information on the frequency and geographic distribution of genetic variants. We could be interested, for ìnstance, in the frequency of the two SNPs in the APOE gene that are associated with Alzheimer's disease. The simplest way to do that is to create a new VCF file that includes only the information of these SNPs using `VCFtools` and extract allele frequency information using the vcf-query (a utility that is distributed with `VCFtools`). First, you need to create the text file, "SNP.txt", which must include dbSNP identifiers (one idenfifier per line):
 
 ```bash
-cat SNP.txt
-rs429358
-rs7412
+$ echo 'rs429358' > SNP.txt
+$ echo 'rs7412' >> SNP.txt
 ```
 To extract the information for these SNPs from the VCF file:
 
 ```bash
-vcftools --vcf APOE.vcf --snps SNP.txt --recode --recode-INFO-all --out SNPs_only
+$ vcftools --vcf APOE.vcf --snps SNP.txt --recode --recode-INFO-all --out SNPs_only
 ```
 
 > Note that when we create a new VCF file, we must apply the `–recode` and `--recode-INFO-all` option to write out the variants that pass-through filters and to include all data from the INFO fields in the output.
@@ -400,7 +404,7 @@ vcftools --vcf APOE.vcf --snps SNP.txt --recode --recode-INFO-all --out SNPs_onl
 Using the new generated VCF file, we can extract the frequency of the SNPs in the populations of iterest:
 
 ```bash
-vcf-query -f 'The frequency of %ID in African and European populations is %INFO/AFR_AF and %INFO/EUR_AF, respectively\n' SNPs_only.recode.vcf
+$ vcf-query -f 'The frequency of %ID in African and European populations is %INFO/AFR_AF and %INFO/EUR_AF, respectively\n' SNPs_only.recode.vcf
 The frequency of rs429358 in African and European populations is 0.2678 and 0.1551, respectively
 The frequency of rs7412 in African and European populations is 0.1029 and 0.0626, respectively
 ```
@@ -408,7 +412,7 @@ The frequency of rs7412 in African and European populations is 0.1029 and 0.0626
 In `vcf-query`, we can access to the `INFO` field (%INFO) of the VCF file and print a specific entry (in this case `AFR_AF` and `EUR_AF`; to know these specific tags you can print the header of the VCF file using the utility `bcftools`:
 
 ```bash
-bcftools view -h APOE.vcf
+$ bcftools view -h APOE.vcf
 ```
 
 -----------------------------------------------------------------------------------------------------------------------------
