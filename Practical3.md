@@ -56,7 +56,7 @@ Installing `BioPython` (required for some `gffutils` utilities):
 $ pip3 install biopython
 ```
 
-> `BioPython` is a set of freely available tools for biological computation written in `Python` (https://biopython.org/).
+> `BioPython` is a set of freely available tools for biological computation written in `Python`.
 
 Installing `VCFtools` from GitHub platform (required to work with genomic variants). First, we need to install the tool `git`, which allows cloning (download) the repository of `VCFtools` in our computer. In the **command-line terminal ($)**, type:
 
@@ -66,7 +66,7 @@ Linux:
 $ sudo apt install git
 ```
 
-Mac (you must to have installed Homebrew; https://brew.sh/):
+Mac (you must to have installed [Homebrew](https://brew.sh/):
 
 ```bash
 $ brew install git
