@@ -48,7 +48,7 @@ Installing `gffutils` package:
 $ pip3 install gffutils
 ```
 		
-> `gffutils` is a `Python` package for working with GFF and GTF files in a hierarchical manner [https://pythonhosted.org/gffutils/index.html]. 
+> `gffutils` is a `Python` package for working with GFF and GTF files in a hierarchical manner. 
 
 Installing `BioPython` (required for some `gffutils` utilities):
 
@@ -72,7 +72,7 @@ Mac (you must to have installed Homebrew; https://brew.sh/):
 $ brew install git
 ```
 
-Now, we can download and install `VCFtools`. **HINT:** **You just have to write the commands below in the terminal one by one**. The `git` command allows downloading and unzip the folder with the program files, the `cd` command is for entering the uncompressed program directory, and the rest of the commands serve to install `vcftools` in your computer. Do not forget to leave the installation directory with the command `cd ..`. If you don't have `autoconf` installed, it may be necessary to install it. Here are the instructions: [autoconf](autoconf.md)
+Now, we can download and install `VCFtools`. **HINT:** **You just have to write the commands below in the terminal one by one**. The `git` command allows downloading and unzip the folder with the program files, the `cd` command is for entering the uncompressed program directory, and the rest of the commands serve to install `vcftools` in your computer. Do not forget to leave the installation directory with the command `cd ..`. If you don't have `autoconf` installed in your computer, it may be necessary to install it. Here are the instructions: [autoconf installation](autoconf.md)
 
 Linux and Mac
 
@@ -86,7 +86,7 @@ $ sudo make install
 $ cd ..
 ```
 
-> `VCFtools` (https://github.com/vcftools/vcftools) is a program package designed for working with VCF files (https://vcftools.github.io/specs.html) [You many need sudo permissions to run make install].
+> `VCFtools` is a program package designed for working with VCF files.
 
 #### Genomics data files
 Before working with genomic files, we need to install `wget`, a software package for retrieving remote files, and `samtools`, a suit of programs for interacting with high-throughput sequencing data. To do that, in the command-line terminal type:
@@ -105,7 +105,7 @@ $ brew install wget
 $ brew install samtools
 ```
 
-You will download genome sequences (in FASTA format), and feature annotations (in GFF3 format; https://github.com/The-Sequence-Ontology/Specifications/blob/master/gff3.md) of the human chromosome 19 (=GRCh37 assembly) from Ensembl FTP server (http://www.ensembl.org/info/data/ftp/index.html) [assembly version must be exactly the same for both files!]. Create a new working directory and use the wget and bgzip (from `samtools` suite) commands to download and decompress the genomic files:
+You will download genome sequences (in FASTA format), and feature annotations (in GFF3 format) of the human chromosome 19 (=GRCh37 assembly) from Ensembl FTP server. Create a new working directory and use the wget and bgzip (from `samtools` suite) commands to download and decompress the genomic files:
 
 ```bash
 $ mkdir myworkdir
@@ -343,7 +343,7 @@ http://www.ensembl.org/Homo_sapiens/Gene/Summary?db=core;g=ENSG00000130203;r=19:
 
 **EXAMPLE 2**
 
-In this second example, you will see how to extract information from a VCF file. We will use as an example, the VCF of the human chromosome 19 from the 1000 genomes project phase 3; https://www.internationalgenome.org/category/phase-3/) therefore, information about variants. The specific objective is to estimate SNP diversity in the APOE gene and obtain the frequency of its two common allelic variants (rs429358 and rs7412) in African and European populations.
+In this second example, you will see how to extract information from a VCF file. We will use as an example the VCF of the human chromosome 19 from the 1000 genomes project phase 3 and therefore information about genetic variants. The specific objective is to estimate SNP diversity in the APOE gene and obtain the frequency of its two common allelic variants (rs429358 and rs7412) in African and European populations.
 
 Of course, first we should obtain the VCF file, or at least the part of this file that corresponds to the APOE gene. The Htslib project, which is distributed with samtools, includes `tabix`, an interesting command-line utility to download ONLY the region of interest from a VCF file. To do that, `tabix` needs the specific coordinates of the region in the scaffold or chromosome. Again, we can use `gffutils` (e.g. directly in the `Python` console; still in the /myworkdir directory) to obtain these coordinates:
 
