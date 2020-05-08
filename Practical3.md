@@ -234,7 +234,7 @@ Nevertheless, sometimes you need to access all, or part of the children features
 >>> print(mygene)
 19	ensembl_havana	gene	1026298	1039068	.	+	.	ID=gene:ENSG00000064666;Name=CNN2;biotype=protein_coding;description=calponin 2 [Source:HGNC Symbol%3BAcc:2156];gene_id=ENSG00000064666;logic_name=ensembl_havana_gene;version=10
 >>> for t in db.children(mygene, featuretype='mRNA', order_by='start'):
-...		print t
+...		print (t)
 ...
 19	ensembl_havana	mRNA	1026298	1039068	.	+	.	ID=transcript:ENST00000263097;Name=CNN2-001;biotype=protein_coding;version=4;Parent=gene:ENSG00000064666;havana_transcript=OTTHUMT00000420293;havana_version=3;transcript_id=ENST00000263097;tag=basic;ccdsid=CCDS12053.1
 19	ensembl_havana	mRNA	1026610	1039063	.	+	.	ID=transcript:ENST00000348419;Name=CNN2-003;biotype=protein_coding;version=3;Parent=gene:ENSG00000064666;havana_transcript=OTTHUMT00000420296;havana_version=2;transcript_id=ENST00000348419;tag=basic;ccdsid=CCDS12054.1
