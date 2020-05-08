@@ -341,7 +341,9 @@ file.close()
 The script is now ready. Run the script in the same directory in which you have downloaded the genomic data files `/myworkdir` in the terminal and check results. You can validate them in: 
 http://www.ensembl.org/Homo_sapiens/Gene/Summary?db=core;g=ENSG00000130203;r=19:44905791-44909393.
 
+
 >Don't worry about the Byopython warning on partial CDS sequence. In the CDS of one of the transcripts of the APOE gene, the last annotated codon is trucated (in the GFF file).
+
 
 **EXAMPLE 2**
 
