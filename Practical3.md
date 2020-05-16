@@ -365,7 +365,7 @@ Of course, first we should obtain the VCF file, or at least the part of this fil
 Close the `Python` console (remember the command `exit()`, open a new command-line terminal in your computer and type:
 
 ```bash
-$ tabix -h ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/ALL.chr19.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz 19:45409011-45412650 > APOE.vcf 
+$ tabix -h http://hgdownload.cse.ucsc.edu/gbdb/hg19/1000Genomes/phase3/ALL.chr19.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz 19:45409011-45412650 > APOE.vcf
 ```
 
 > The variants annotated in the region specified in the coordinates 19:45409011-45412650 are now in the file “APOE.vcf” in our computer. 
