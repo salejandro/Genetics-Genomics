@@ -66,7 +66,7 @@ Linux:
 $ sudo apt install git
 ```
 
-Mac (you must to have installed [Homebrew](https://brew.sh/)):
+Mac (you must have installed [Homebrew](https://brew.sh/)):
 
 ```bash
 $ brew install git
