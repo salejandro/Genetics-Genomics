@@ -121,9 +121,9 @@ $ head -1500 Homo_sapiens.GRCh37.87.chromosome.19.gff3
 $ head -1500 Homo_sapiens.GRCh37.dna.chromosome.19.fa
 ```
 
-#### Examples
+#### EXAMPLES
 
-**EXAMPLE 1**
+**Example 1**
 
 Imagine that you are interested in obtaining all the proteins (the products of all mRNAs) encoded by a gene of interest (e.g. the human gene APOE). [For simplicity, we will assume that we know that the gene is on the human chromosome 19]. You can write a Python script for this task:
 
@@ -278,7 +278,7 @@ At this point we are ready to return with our `Python` script. Remember that our
 
 -----------------------------------------------------------------------------
 
-**Let’s continue here with our script**
+Let’s continue here with our script:
 
 To exit from python terminal:
 
@@ -345,7 +345,7 @@ http://www.ensembl.org/Homo_sapiens/Gene/Summary?db=core;g=ENSG00000130203;r=19:
 >Don't worry about the Byopython warning on partial CDS sequence. In the CDS of one of the transcripts of the APOE gene, the last annotated codon is trucated (in the GFF file).
 
 
-**EXAMPLE 2**
+**Example 2**
 
 In this second example, you will see how to extract information from a VCF file. We will use as an example the VCF of the human chromosome 19 from the 1000 genomes project phase 3 and therefore information about genetic variants. The specific objective is to estimate SNP diversity in the APOE gene and obtain the frequency of its two common allelic variants (rs429358 and rs7412) in African and European populations.
 
@@ -421,9 +421,9 @@ $ bcftools view -h APOE.vcf
 
 -----------------------------------------------------------------------------------------------------------------------------
 
-### PRACTICAL EXERCISE
+### PRACTICAL EXERCISE (requested for evaluation)
 
-Solve these two questions and deliver a small report explaining briefly the workflow and the scripts used to find the solutions (deadline June 5h):
+Try to solve these two questions and deliver a small report explaining briefly the workflow and the scripts used to find the solutions (deadline June 4h):
 
 1. How many PROTEIN-CODING genes in the human chromosome 19 have ONLY ONE transcript?
 
