@@ -1,4 +1,4 @@
-## Genetics & Genomics 2020
+# Genetics and Genomics 2020/2021
 
 ## Practical 3: Introduction to genomics data editing and manipulation
 
