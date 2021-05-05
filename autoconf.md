@@ -15,4 +15,3 @@ sudo apt-get install build-essential
 brew install autoconf automake libtool
 ```
 
-[Return to the practical guide](Practical3.md)
